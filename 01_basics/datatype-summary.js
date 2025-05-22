@@ -82,5 +82,59 @@ console.log(typeof nextTick); // function
 console.log(typeof process.nextTick); // function
 console.log(typeof Buffer); // function
 
+// +++++++++++++++++++++++++++++++++++++++++++++++
+
+// stack(primitive) vs heap(non-primitive)
+// stack is used for storing primitive data types and function calls
+// heap is used for storing non-primitive data types like objects and arrays
+// stack is faster than heap
+// stack is a LIFO (last in first out) data structure
+// heap is a dynamic memory allocation data structure
+// stack has a fixed size
+// heap has a variable size
+// stack is used for static memory allocation
+// heap is used for dynamic memory allocation
+// stack is used for storing function calls and local variables
+// heap is used for storing objects and arrays
+
+let myYoutubeName = 'Code Runner';
+let myYoutubeName2 = myYoutubeName; // copy by value
+myYoutubeName2 = 'Code Runner 2'; // change the value of myYoutubeName2
+console.log(myYoutubeName); // Code Runner
+console.log(myYoutubeName2); // Code Runner 2
+// myYoutubeName is not affected by the change in myYoutubeName2
+
+let myYoutubeChannel = {
+  name: 'Code Runner',
+  subs: 2600,
+  videos: ['video1', 'video2'],
+};
+let myYoutubeChannel2 = myYoutubeChannel; // copy by reference
+myYoutubeChannel2.name = 'Code Runner 2'; // change the value of myYoutubeChannel2
+console.log(myYoutubeChannel); // { name: 'Code Runner 2', subs: 1000, videos: [ 'video1', 'video2' ] }
+console.log(myYoutubeChannel2); // { name: 'Code Runner 2', subs: 1000, videos: [ 'video1', 'video2' ] }
+// myYoutubeChannel is affected by the change in myYoutubeChannel2
+// because they are pointing to the same object in memory
+
+
+// to create a copy of an object, we can use the spread operator or Object.assign
+let myYoutubeChannel3 = { ...myYoutubeChannel }; // copy by value
+myYoutubeChannel3.name = 'Code Runner 3'; // change the value of myYoutubeChannel3
+console.log(myYoutubeChannel); // { name: 'Code Runner 2', subs: 1000, videos: [ 'video1', 'video2' ] }
+console.log(myYoutubeChannel3); // { name: 'Code Runner 3', subs: 1000, videos: [ 'video1', 'video2' ] }
+// myYoutubeChannel is not affected by the change in myYoutubeChannel3
+// because they are pointing to different objects in memory
+
+
+// to create a copy of an array, we can use the spread operator or Array.from
+let myYoutubeVideos = ['video1', 'video2', 'video3'];
+let myYoutubeVideos2 = [...myYoutubeVideos]; // copy by value
+myYoutubeVideos2[0] = 'video4'; // change the value of myYoutubeVideos2
+console.log(myYoutubeVideos); // [ 'video1', 'video2', 'video3' ]
+console.log(myYoutubeVideos2); // [ 'video4', 'video2', 'video3' ]
+// myYoutubeVideos is not affected by the change in myYoutubeVideos2
+// because they are pointing to different arrays in memory
+// to create a copy of an object, we can use the spread operator or Object.assign
+
 
 
